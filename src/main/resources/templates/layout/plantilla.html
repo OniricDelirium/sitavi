@@ -18,13 +18,14 @@
         <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-       <header th:fragment="header" class="header">
-             <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #4CAF50">
-        <div class="container">
-            <a th:href="@{/}" class="navbar-brand">
-                <img th:src="@{/Vegan-Sitavi.jpg}" alt="Logo" height="40"></img>
+        <!-- Aquí va el menú de navegación -->
+        <header th:fragment="header" class="header">
+            <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #4CAF50">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand">
+                        <img th:src="@{/Vegan-Sitavi.jpg}" alt="Logo" height="60"></img>
 
-            </a>
+                    </a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -35,6 +36,14 @@
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.blog}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.quienessomos}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.contacto}]]</a></li>
+                            <li class="nav-item px-3">
+                                <a th:href="@{/carrito}" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        [[${cantidadProductos}]]
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
@@ -50,17 +59,27 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div id="resultBlock">
 
+                        <!-- Sección de redes sociales -->
+                        <div class="d-flex">
+                            <a href="https://www.facebook.com/vegansitavicr" target="_blank" class="nav-link text-white mx-3">
+                                <i class="fab fa-facebook-f fa-2x"></i>
+                            </a>
+                            <a href="https://www.instagram.com/vegansitavi" target="_blank" class="nav-link text-white mx-3">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=%2B50660664898&context=ARBzuxEz2WSIozyjK_QqwjRLXDhcTgbMeenIr6HJcNSEVA6ZKJFrAy7p9eBR_NboyDASUazUOEo0zMc8L7e_kbobXFqNSwb1KY7salcf5qHhFLhO6sp6N2N6nOaJyeMqJcf9LK-Y_7otppYYloopoo5lgw&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawI4H0RleHRuA2FlbQIxMAABHb6sNpeIUw_xKgl5XIA0VgouNgRyL09eBDnN8uMx_QfrqJk20ht_aRtAJg_aem_p8PP4c9b1MjTgVn_-ZaMdQ" target="_blank" class="nav-link text-white mx-3">
+                                <i class="fab fa-whatsapp fa-2x"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
-            
-           
+
+
         </header>
 
-        <footer th:fragment="footer" class="p-2 mt-5 text-white" style="background-color: #388E3C">
+        <footer th:fragment="footer" class="p-2 text-white" style="background-color: #388E3C">
             <p class="lead text-center">&COPY; [[#{plantilla.derechos}]]</p>
         </footer>
 

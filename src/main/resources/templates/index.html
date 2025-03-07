@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://thymeleaf.org"
-    xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
         <title>Pruebas</title>
-        <meta charset="UTF-8"/> <!-- Alfabeto -->
+        <meta charset="UTF-8"/> 
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-        
-        
+        <!-- Seccion bienvenidos a la derecha -->
+        <section class="hero-section"> <!-- Bloque verde -->
+            <div class="hero-text"> <!-- Formato para el texto -->
+                <h1>BIENVENIDOS A <span class="brand">VEGAN SITAVI</span></h1> <!-- Brand solo tiene el estilo para texto Bold -->
+            </div>
+        </section>
+
+        <section class="about-section container my-5">
+            <div class="content-box"> <!-- Cuadro en blanco -->
+                <div class="row align-items-center">
+                    <!-- Columna Izquierda -->
+                    <div class="col-md-4 text-left">
+                        <h2 class="section-title">[[#{plantilla.quienessomos}]]</h2>
+                        <p class="text-muted text-center">[[#{aplicacion.titulo}]]</p>
+                        <a href="#" class="more-info d-block text-center mx-auto">[[#{plantilla.masinformacion}]]</a>
+                    </div>
+
+                    <!-- Columna Derecha -->
+                    <div class="col-md-8">
+                        <p>
+                            Somos una empresa costarricense fundada en el año 2021, pero gracias al arduo trabajo y a la continua búsqueda de excelencia en nuestros ingredientes. Nos enfocamos día a día en brindarle la mejor granola a nuestros clientes, con el objetivo de ayudarles a cumplir sus sueños de comer saludable a un excelente precio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
