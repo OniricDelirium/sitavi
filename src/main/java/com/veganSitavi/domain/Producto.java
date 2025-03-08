@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
 
-@Data
+//@Data
 @Entity
 @Table(name="producto")
 public class Producto implements Serializable{
@@ -14,13 +14,11 @@ public class Producto implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_producto")
     private Long idProducto;
-    //private Long idCategoria;
+    private String nombre;
     private String descripcion;
-    private String detalle;
     private double precio;
     private int existencias;
-    private String rutaImagen;
-    private boolean activo;
+    private String imagen;
     
     
     @ManyToOne
@@ -34,9 +32,7 @@ public class Producto implements Serializable{
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
-    
-    
+
     public Long getIdProducto() {
         return idProducto;
     }
@@ -45,13 +41,13 @@ public class Producto implements Serializable{
         this.idProducto = idProducto;
     }
 
-//    public Long getIdCategoria() {
-//        return idCategoria;
-//    }
-//
-//    public void setIdCategoria(Long idCategoria) {
-//        this.idCategoria = idCategoria;
-//    }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -59,14 +55,6 @@ public class Producto implements Serializable{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
     }
 
     public double getPrecio() {
@@ -85,23 +73,12 @@ public class Producto implements Serializable{
         this.existencias = existencias;
     }
 
-    public String getRutaImagen() {
-        return rutaImagen;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
-    
-    
     
 }

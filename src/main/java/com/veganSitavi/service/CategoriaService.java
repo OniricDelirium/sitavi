@@ -20,14 +20,12 @@ public class CategoriaService {
     // findAll() = SELECT * FROM [Tabla];
     
     @Transactional(readOnly=true)
-    public List<Categoria> getCategorias(boolean activos){
+    public List<Categoria> getCategorias(){
         var lista = categoriaRepository.findAll();
-        if (activos) {
-            //Si solo quiere activos
-            lista.removeIf(e -> !e.isActivo());
-        }
+        
         return lista;
     }
+    
     @Transactional(readOnly=true)
     public Categoria getCategoria(Categoria categoria){
         return categoriaRepository.findById(categoria.getIdCategoria()).orElse(null);

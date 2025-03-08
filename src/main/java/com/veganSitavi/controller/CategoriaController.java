@@ -1,6 +1,5 @@
 package com.veganSitavi.controller;
 
-// Clases que tienen anotación controller van a estar guardadas en un indece para cuando llegue un url (petición de usuario) responda con algo
 
 import com.veganSitavi.domain.Categoria;
 import com.veganSitavi.service.CategoriaService;
@@ -23,7 +22,7 @@ public class CategoriaController {
     
     @GetMapping("/listado")
     public String listado(Model model){
-        var categorias=categoriaService.getCategorias(true); // Recuperando el array list
+        var categorias=categoriaService.getCategorias(); // Recuperando el array list
         model.addAttribute("categorias",categorias); // inyectando el array list para que se vea en el html
         
         return"/categoria/listado";
@@ -53,7 +52,7 @@ public class CategoriaController {
             //Guardar en la nube
             categoriaService.save(categoria);
             String ruta=firebaseStorageService.cargaImagen(imagenFile, "categoria", categoria.getIdCategoria());
-           categoria.setRutaImagen(ruta);
+           categoria.setImagen(ruta);
            }
         categoriaService.save(categoria);
 

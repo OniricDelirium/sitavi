@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/pruebas")
-public class PruebasController {
+@RequestMapping("/productos")
+public class MostrarProductosController {
     
     @Autowired
     private CategoriaService categoriaService;
@@ -22,18 +22,18 @@ public class PruebasController {
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var categorias=categoriaService.getCategorias(false);
+        var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
-        var productos=productoService.getProductos(false);
+        var productos=productoService.getProductos();
         model.addAttribute("productos", productos);
         
         
-        return "/pruebas/listado";
+        return "/productos/listado";
     }
     
     @GetMapping("/listado/{idCategoria}")
     public String listado(Model model, Categoria categoria) {
-        var categorias=categoriaService.getCategorias(false);
+        var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
         categoria=categoriaService.getCategoria(categoria);
         
@@ -41,7 +41,7 @@ public class PruebasController {
         model.addAttribute("productos", productos);
         
         
-        return "/pruebas/listado";
+        return "/productos/listado";
     }
     
 }

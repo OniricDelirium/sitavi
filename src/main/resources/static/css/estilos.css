@@ -60,22 +60,27 @@ body {
     width: 100%;
 }
 
-/* Para resaltar ubicación del usuario en la página*/
-.active{
-    color: black;
-}
+/* Fijar el header arriba*/
+
+/*header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 100;
+}*/
 
 /*.wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;  100% de la altura de la ventana 
-}
+}*/
 
- Hace que el contenido crezca y empuje el footer hacia abajo 
-.content {
+/* Hace que el contenido crezca y empuje el footer hacia abajo */
+/*.content {
     flex: 1;
-}
+}*/
 
+/*
  Estilizar el footer 
 footer {
     background-color: #388E3C;

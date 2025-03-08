@@ -14,18 +14,17 @@ public class ProductoService {
     private ProductoRepository productoRepository;
     
     @Transactional(readOnly=true)
-    public List<Producto> getProductos(boolean activos){
+    public List<Producto> getProductos(){
         var lista = productoRepository.findAll();
-        if (activos) {
-            //Si solo quiere activos
-            lista.removeIf(e -> !e.isActivo());
-        }
+        
         return lista;
     }
+    
     @Transactional(readOnly=true)
     public Producto getProducto(Producto producto){
         return productoRepository.findById(producto.getIdProducto()).orElse(null);
     }
+    
     @Transactional
     public void save(Producto producto){
         productoRepository.save(producto);

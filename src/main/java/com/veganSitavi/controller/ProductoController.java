@@ -24,9 +24,9 @@ public class ProductoController {
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var productos=productoService.getProductos(true);
+        var productos=productoService.getProductos();
         model.addAttribute("productos", productos);
-        var categorias=categoriaService.getCategorias(true);
+        var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
         return "/producto/listado";
     }
@@ -43,9 +43,9 @@ public class ProductoController {
     public String modificar(Producto producto, Model model) {
         producto=productoService.getProducto(producto);
         model.addAttribute("producto", producto);
-        var productos=productoService.getProductos(true);
+        var productos=productoService.getProductos();
         model.addAttribute("productos", productos);
-        var categorias=categoriaService.getCategorias(true);
+        var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
         return "/producto/modifica";
     }
@@ -59,7 +59,7 @@ public class ProductoController {
             //Guardar en la nube
             productoService.save(producto);
             String ruta=firebaseStorageService.cargaImagen(imagenFile, "producto", producto.getIdProducto());
-           producto.setRutaImagen(ruta);
+           producto.setImagen(ruta);
            }
         productoService.save(producto);
 

@@ -10,15 +10,14 @@ import lombok.Data;
 @Table(name="categoria")
 public class Categoria implements Serializable{
     
-    private static final long serialVersionUID = 1L; // Para poder reconocer la versión serializada de los ids con Auto_Increment
+    private static final long serialVersionUID = 1L; 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria") // Forma de decir con que nombre se va a tratar el campo dentro del sitio web a diferencia de la BD
+    @Column(name = "id_categoria")
             
     private Long idCategoria;
-    private String descripcion;
-    private String rutaImagen;
-    private boolean activo;
+    private String nombre;
+    private String imagen;
     
     @OneToMany
     @JoinColumn(name="id_categoria")
@@ -40,40 +39,19 @@ public class Categoria implements Serializable{
         this.idCategoria = idCategoria;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getRutaImagen() {
-        return rutaImagen;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-    
-    
 }
-
-/*
-id_categoria = idCategoria
-
-create table categoria (
-  id_categoria INT NOT NULL AUTO_INCREMENT,
-  descripcion VARCHAR(30) NOT NULL,
-  ruta_imagen varchar(1024),
-  activo bool,
-  PRIMARY KEY (id_categoria))
-*/
