@@ -24,7 +24,6 @@
                 <div class="container-fluid">
                     <a th:href="@{/}" class="navbar-brand ms-3">
                         <img th:src="@{/Vegan-Sitavi.jpg}" alt="Logo" height="80"></img>
-
                     </a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -37,7 +36,7 @@
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.quienessomos}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.contacto}]]</a></li>
                             <li class="nav-item px-3 position-relative pe-0">
-                                <a th:href="@{/carrito}" class="nav-link pe-0 pt-0">
+                                <a href="#" class="nav-link pe-0 pt-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
                                     <i class="fas fa-shopping-cart"></i>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="height: 13px; width: 8px">
                                         [[${cantidadProductos}]]
@@ -92,6 +91,20 @@
 
 
         </header>
+
+        <section th:fragment="offcanva">
+            <div class="offcanvas offcanvas-end bg-success" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel"  style="z-index: 1050;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title text-white" id="offcanvasCarritoLabel">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+
+                    
+                    
+                </div>
+            </div>
+        </section>
 
         <footer th:fragment="footer" class="p-2 text-white" style="background-color: #388E3C">
             <p class="lead text-center">&COPY; [[#{plantilla.derechos}]]</p>
