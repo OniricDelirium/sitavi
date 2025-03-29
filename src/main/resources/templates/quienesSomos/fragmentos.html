@@ -5,30 +5,19 @@
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
         <title>Pruebas</title>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
-
     <body>
 
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <!-- 1 Sección donde se muestran los tabs de las categorías-->
 
-        <section th:replace="~{layout/plantilla :: offcanva}"/>
-
-        <!-- Seccion bienvenidos a la derecha -->
-        <section class="hero-section"> <!-- Bloque verde -->
-            <div class="hero-text"> <!-- Formato para el texto -->
-                <h1>[[#{plantilla.bienvenido}]] <span class="brand">[[#{aplicacion.titulo.mayus}]]</span></h1> <!-- Brand solo tiene el estilo para texto Bold -->
-            </div>
-        </section>
-
-        <section class="about-section container my-5">
+        <section th:fragment="contQuienesSomos" class="about-section container my-5">
             <div class="content-box"> <!-- Cuadro en blanco -->
                 <div class="row align-items-center">
                     <!-- Columna Izquierda -->
                     <div class="col-md-4 text-left">
                         <h2 class="section-title text-center">[[#{plantilla.quienessomos}]]</h2>
                         <p class="text-muted text-center">[[#{aplicacion.titulo}]]</p>
-                        <a href="#" class="more-info d-block text-center mx-auto">[[#{plantilla.masinformacion}]]</a>
                     </div>
 
                     <!-- Columna Derecha -->
@@ -41,7 +30,6 @@
                 </div>
             </div>
         </section>
-
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+        
     </body>
 </html>

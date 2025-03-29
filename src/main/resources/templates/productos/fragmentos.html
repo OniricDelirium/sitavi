@@ -8,28 +8,27 @@
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
-
+        
         <!-- 1 Sección donde se muestran los tabs de las categorías-->
 
         <section th:fragment="tabsCategorias" class="p-4 mb-4">
             <div class="row">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active mx-3"
+                        <a class="nav-link active mx-2"
                            href="/productos/listado">
                             [[#{categorias.todas}]]
                         </a>
                     </li>
                     <li th:each = "c : ${categorias}"
                         class="nav-item">
-                        <a class="nav-link active mx-3"
+                        <a class="nav-link active mx-2"
                            th:href="@{/productos/listado/}+${c.idCategoria}">
                             [[${c.nombre}]]
                         </a>
                     </li>
                 </ul>
             </div>
-
 
         </section>
 

@@ -32,8 +32,8 @@
                         <ul class="navbar-nav">
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.inicio}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/productos/listado}">[[#{plantilla.productos}]]</a></li>
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.blog}]]</a></li>
-                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.quienessomos}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/blog/listado}">[[#{plantilla.blog}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link" th:href="@{/quienesSomos/listado}">[[#{plantilla.quienessomos}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/}">[[#{plantilla.contacto}]]</a></li>
                             <li class="nav-item px-3 position-relative pe-0">
                                 <a href="#" class="nav-link pe-0 pt-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
@@ -60,7 +60,7 @@
                                     </a>
                                 </li>
                                 <li class="mx-3">
-                                    <a href="https://wa.me/50660664898" target="_blank" class="nav-link text-white">
+                                    <a href="https://wa.me/50683173625" target="_blank" class="nav-link text-white">
                                         <i class="fab fa-whatsapp fa-2x"></i>
                                     </a>
                                 </li>
@@ -83,13 +83,9 @@
                                 <li><a class="dropdown-item" th:href="@{/(lang=pt)}">Portugaise</a></li>
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
             </nav>
-
-
         </header>
 
         <section th:fragment="offcanva">
@@ -99,9 +95,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-
-                    
-                    
                 </div>
             </div>
         </section>

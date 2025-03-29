@@ -8,12 +8,10 @@
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
-        
         <header th:replace="~{layout/plantilla :: header}"/>
 
         <section th:replace="~{layout/plantilla :: offcanva}"/>
-        <section th:replace = "~{productos/fragmentos :: tabsCategorias}"/>
-        <section th:replace = "~{productos/fragmentos :: tarjetas}"/>
+        <section th:replace ="~{blog/fragmentos :: recetas}"/>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>

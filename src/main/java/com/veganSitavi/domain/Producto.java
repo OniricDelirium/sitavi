@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
 
-//@Data
+@Data
 @Entity
 @Table(name="producto")
 public class Producto implements Serializable{

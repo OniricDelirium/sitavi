@@ -31,7 +31,6 @@ public class ProductoController {
         return "/producto/listado";
     }
     
-    
     @GetMapping("/eliminar/{idProducto}")
     public String eliminar(Producto producto) {
         productoService.delete(producto);
