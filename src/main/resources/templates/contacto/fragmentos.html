@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{/layout/plantilla :: head}">
+        <title>Pruebas</title>
+        <meta charset="UTF-8"/> <!-- Alfabeto -->
+    </head>
+    <body>
+
+        <!-- 1 Sección donde se le muestra un formulario al usuario para hacer una consulta-->
+
+        <section th:fragment="formulario" class="container-fluid my-5 d-flex justify-content-center align-items-center">
+            <div class="row w-100 justify-content-center">
+                <div class="col-md-8"> 
+                    <form th:action="@{/producto/guardar}"
+                          th:object="${producto}"
+                          method="post"
+                          class="needs-validation"
+                          enctype="multipart/form-data">
+                        <div class="mb-3 row">
+                            <div class="col-md-6">
+                                <label for="nombreCompleto" class="form-label fw-bold fs-5 text-white">
+                                    Nombre <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control rounded-2 py-2" id="nombreCompleto" name="nombreCompleto" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="apellidos" class="form-label fw-bold fs-5 text-white">
+                                    Apellidos <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control rounded-2 py-2" id="apellidos" name="apellidos" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label fw-bold fs-5 text-white">
+                                Correo Electrónico <span class="text-danger">*</span>
+                            </label>
+                            <input type="email" class="form-control rounded-2 py-2" id="correo" name="correo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label fw-bold fs-5 text-white">
+                                Comentario o Mensaje <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control rounded-2 py-5" id="mensaje" name="mensaje" rows="8" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>
