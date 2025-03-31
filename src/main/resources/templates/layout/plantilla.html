@@ -18,6 +18,8 @@
         <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+
+
         <!-- Aquí va el menú de navegación -->
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #4CAF50">
@@ -85,7 +87,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="resultBlock">
+                    <div>
+                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/login}">
+                                    <i class='fas fa-sign-in-alt'></i>
+                                </a>
+                            </li>                            
+                        </ul>
+                    </div>
+                </div>
             </nav>
+
+
         </header>
 
         <section th:fragment="offcanva">

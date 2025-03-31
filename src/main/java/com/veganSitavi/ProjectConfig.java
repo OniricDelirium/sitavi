@@ -11,6 +11,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+//import org.springframework.security.core.userdetails.UserDetailsService;
+
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer{
 
@@ -49,7 +51,32 @@ public class ProjectConfig implements WebMvcConfigurer{
         return resolver;
     }
     
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception {
+//        http.authorizeHttpRequests((request) -> request.requestMatchers("/", "/index", "/error/**","/carrito/**",
+//                        "/reportes/**", "/registro/**", "/js/**", "/webjars/**")
+//                .permitAll()
+//                .requestMatchers("/producto/nuevo", "/producto/guardar/**","/producto/eliminar/**",
+//                        "/producto/modificar/**", "/categoria/nuevo/**","/categoria/guardar/**","/categoria/eliminar/**",
+//                        "/categoria/modificar/**")
+//                .hasRole("ADMIN")
+//                .requestMatchers("/producto/listado", "/categoria/listado","/pruebas/**")
+//                
+//                .hasRole("USER")).formLogin((form)-> form.loginPage("/login").permitAll())
+//                .logout((logout) -> logout.permitAll());
+//        return http.build();
+//    }
+
     
+//   @Bean
+//   public UserDetailsService users() {
+//       UserDetails admin = User.builder().username("leo").password("{noop}123")
+//               .roles("USER","ADMIN").build();
+//       UserDetails usuario = User.builder().username("pedro").password("{noop}123")
+//               .roles("USER").build();
+//       
+//       return new InMemoryUserDetailsManager(admin,usuario);
+//   }
     
     
 }
