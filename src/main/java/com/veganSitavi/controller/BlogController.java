@@ -12,4 +12,9 @@ public class BlogController {
     public String mostrarListado() {
         return "blog/listado"; 
     }
+    
+    @GetMapping("/recetas")
+    public String mostrarListado2() {
+        return "blog/recetas"; 
+    }
 }

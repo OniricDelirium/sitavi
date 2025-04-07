@@ -19,7 +19,6 @@
     </head>
     <body>
 
-
         <!-- Aquí va el menú de navegación -->
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #4CAF50">
@@ -40,6 +39,10 @@
                             <li class="nav-item px-3 position-relative pe-0">
                                 <a href="#" class="nav-link pe-0 pt-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasCarrito">
                                     <i class="fas fa-shopping-cart"></i>
+                                    <!--Punto rojo del carrito
+                                      <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                      <span class="visually-hidden">New alerts</span>
+                                      </span>-->
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="height: 13px; width: 8px">
                                         [[${cantidadProductos}]]
                                     </span>
@@ -100,7 +103,6 @@
                     </div>
                 </div>
             </nav>
-
 
         </header>
 

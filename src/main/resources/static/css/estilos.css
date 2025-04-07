@@ -69,6 +69,26 @@ body {
     width: 100%; /* Que no sea más grande que su contenedor */
 }
 
+.left-box {
+    background-color: white; 
+    padding: 40px; 
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 500px; /* Ajusta el ancho máximo */
+    width: 100%; /* Que no sea más grande que su contenedor */
+    margin-left: 0 /* Alinea el cuadro a la izquierda */
+}
+
+.right-box {
+    background-color: white; 
+    padding: 40px; 
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 500px; /* Ajusta el ancho máximo */
+    width: 100%; /* Que no sea más grande que su contenedor */
+    margin-left: auto /* Alinea el cuadro a la derecha */
+}
+
 .navbar {
     width: 100%;
 }
