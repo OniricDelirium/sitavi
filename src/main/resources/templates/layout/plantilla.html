@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:fragment="head">
         <title>Vegan Sitavi</title>
         <meta charset="UTF-8"/>
@@ -25,7 +26,7 @@
             <nav class="navbar navbar-expand-sm navbar-dark p-0" style="background-color: #4CAF50">
                 <div class="container-fluid">
                     <a th:href="@{/}" class="navbar-brand ms-3">
-                        <img th:src="@{/Vegan-Sitavi.jpg}" alt="Logo" height="80"></img>
+                        <img th:src="@{/imagenes_productos/Vegan-Sitavi.jpg}" alt="Logo" height="80"/>
                     </a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
