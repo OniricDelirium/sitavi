@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{/layout/plantilla :: head}">
+        <title th:text="'Detalle de ' + ${receta.nombre}">Detalle</title>
+        <meta charset="UTF-8"/> <!-- Alfabeto -->
+    </head>
+    <body>
+
+        <!-- 1 Sección donde se muestra cada receta -->
+        <div class="d-flex justify-content-center mt-5 mb-5 px-3">
+            <div class="content-box">
+                <h2 th:text="${receta.nombre}">Nombre</h2>
+                <img th:src="@{${receta.imagen}}"
+                     class="img-fluid mb-4"
+                     alt="Imagen no disponible"/>
+
+                <h4>Ingredientes</h4>
+                <p th:text="${receta.ingredientes}"></p>
+
+                <h4>Preparación</h4>
+                <p th:text="${receta.preparacion}"></p>
+
+                <a class="btn btn-secondary mt-3" th:href="@{/blog/listado}">Volver al listado</a>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

@@ -23,17 +23,19 @@ public class RegistroController {
     private RegistroService registroService;
 
     @GetMapping("/nuevo")
-    public String nuevo(Model model, Usuario usuario) {
+    public String nuevo(Model model) {
+        model.addAttribute("usuario", new Usuario());
         return "/registro/nuevo";
     }
 
     @GetMapping("/recordar")
-    public String recordar(Model model, Usuario usuario) {
+    public String recordar(Model model) {
+        model.addAttribute("usuario", new Usuario());
         return "/registro/recordar";
     }
 
     @PostMapping("/crearUsuario")
-    public String crearUsuario(Model model, Usuario usuario) 
+    public String crearUsuario(Model model, Usuario usuario)
             throws MessagingException {
         model = registroService.crearUsuario(model, usuario);
         return "/registro/salida";
@@ -41,8 +43,8 @@ public class RegistroController {
 
     @GetMapping("/activacion/{usuario}/{id}")
     public String activar(
-            Model model, 
-            @PathVariable(value = "usuario") String usuario, 
+            Model model,
+            @PathVariable(value = "usuario") String usuario,
             @PathVariable(value = "id") String id) {
         model = registroService.activar(model, usuario, id);
         if (model.containsAttribute("usuario")) {
@@ -52,18 +54,17 @@ public class RegistroController {
         }
     }
 
-    
     // Se ejecuta cuando ya se tiene toda la info del usuario
     @PostMapping("/activar")
     public String activar(
-            Usuario usuario, 
+            Usuario usuario,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
         registroService.activar(usuario, imagenFile);
         return "redirect:/";
     }
 
     @PostMapping("/recordarUsuario")
-    public String recordarUsuario(Model model, Usuario usuario) 
+    public String recordarUsuario(Model model, Usuario usuario)
             throws MessagingException {
         model = registroService.recordarUsuario(model, usuario);
         return "/registro/salida";
