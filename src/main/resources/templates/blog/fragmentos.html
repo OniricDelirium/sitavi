@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
-        <meta charset="UTF-8"/> <!-- Alfabeto -->
-    </head>
-    <body>
-
-        <!-- 1 Sección donde se muestran los tabs de las categorías-->
-
-        <section th:fragment="recetas" class="about-section container my-5">
-            <div class="content-box mx-auto"> <!-- Cuadro en blanco -->
-                <div class="row align-items-center">
-                    <!-- Columna Izquierda -->
-                    <div class="col-md-4 text-left">
-                        <h2 class="section-title text-center">[[#{blog.recetas}]]</h2>
-                        <p class="text-muted text-center">[[#{aplicacion.titulo}]]</p>
-                        <a href="#" class="more-info d-block text-center mx-auto">[[#{plantilla.masinformacion}]]</a>
-                    </div>
-
-                    <!-- Columna Derecha -->
-                    <div class="col-md-7">
-                        <h5 class="brand text-center mb-3">[[#{recetas.mensaje}]]</h5>
-                        <p class="justify">[[#{recetas.mensaje2}]]</p>
-                        <p class="justify">[[#{recetas.mensaje3}]]</p>
-                        <p class="text-center brand" style="color: #4CAF50">[[#{recetas.mensaje4}]]</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </body>
-</html>
+ 
+ <html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://thymeleaf.org"
+       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
+     <head th:replace="~{/layout/plantilla :: head}">
+         <title>Pruebas</title>
+         <meta charset="UTF-8"/> <!-- Alfabeto -->
+     </head>
+     <body>
+ 
+         <!-- 1 Sección donde se muestran los tabs de las categorías-->
+ 
+         <section th:fragment="recetas" class="about-section container my-5">
+             <div class="content-box mx-auto"> <!-- Cuadro en blanco -->
+                 <div class="row align-items-center">
+                     <!-- Columna Izquierda -->
+                     <div class="col-md-4 text-left">
+                         <h2 class="section-title text-center">[[#{blog.recetas}]]</h2>
+                         <p class="text-muted text-center">[[#{aplicacion.titulo}]]</p>
+                         <a href="#" class="more-info d-block text-center mx-auto">[[#{plantilla.masinformacion}]]</a>
+                     </div>
+ 
+                     <!-- Columna Derecha -->
+                     <div class="col-md-7">
+                         <h5 class="brand text-center mb-3">[[#{recetas.mensaje}]]</h5>
+                         <p class="justify">[[#{recetas.mensaje2}]]</p>
+                         <p class="justify">[[#{recetas.mensaje3}]]</p>
+                         <p class="text-center brand" style="color: #4CAF50">[[#{recetas.mensaje4}]]</p>
+                     </div>
+ 
+                 </div>
+             </div>
+         </section>
+ 
+     </body>
+ </html>
