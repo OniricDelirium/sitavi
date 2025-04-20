@@ -23,7 +23,7 @@
 
         <section th:fragment="listado">
             <div class="row p-3">
-                <div class="col-md-7">
+                <div class="col-12 mb-3">
                     <div class="card p-2">
                         <div class="card-header">
                             <h4>[[#{carrito.titulo}]]</h4>
@@ -69,7 +69,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <!-- Bloque de total y botones -->
+                <div class="col-12">
                     <div class="card text-center text-white mb-3 border-0">
                         <div class="card text-center bg-primary text-white mb-3">
                             <div class="card-body">
@@ -81,7 +82,7 @@
                         </div>
                         <div class="card text-center text-white mb-3 border-0 mt-4">
                             <div class="card-body">
-                                <a th:href="@{/}"
+                                <a th:href="@{/productos/listado}"
                                    class="btn btn-success fs-5" style="width: 40rem; height: 3rem">
                                     <i class='fas fa-reply'></i> [[#{carrito.seguirComprando}]]
                                 </a>
