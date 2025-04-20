@@ -28,14 +28,14 @@ public class ProductoController {
         model.addAttribute("productos", productos);
         var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
-        return "/producto/listado";
+        return "/productos/listado";
     }
     
     @GetMapping("/eliminar/{idProducto}")
     public String eliminar(Producto producto) {
         productoService.delete(producto);
         
-        return "redirect:/producto/listado";
+        return "redirect:/productos/listado";
     }
     
     @GetMapping("/modificar/{idProducto}")
@@ -46,7 +46,7 @@ public class ProductoController {
         model.addAttribute("productos", productos);
         var categorias=categoriaService.getCategorias();
         model.addAttribute("categorias", categorias);
-        return "/producto/modifica";
+        return "/productos/modifica";
     }
     
     @Autowired
@@ -62,6 +62,6 @@ public class ProductoController {
            }
         productoService.save(producto);
 
-        return "redirect:/producto/listado";
+        return "redirect:/productos/listado";
     }
 }

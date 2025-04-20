@@ -128,6 +128,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
+
+                    <div th:if="${listaItems != null}">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center" th:each="item : ${listaItems}">
+                                <div>
+                                    <h6 th:text="${item.producto.nombre}">Nombre del producto</h6>
+                                    <small>Cantidad: <span th:text="${item.cantidad}"></span></small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill" th:text="${item.precio}">₡0</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div th:unless="${listaItems != null}">
+                        <p class="text-white">Tu carrito está vacío.</p>
+                    </div>
+
                 </div>
             </div>
         </section>

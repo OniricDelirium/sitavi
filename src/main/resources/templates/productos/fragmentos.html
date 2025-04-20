@@ -9,7 +9,100 @@
     </head>
     <body>
         
-        <!-- 1 Sección donde se muestran los tabs de las categorías-->
+        
+        <!-- 1 Sección donde se muestra el botón de agregar producto-->
+
+        <section th:fragment="btnAgregar" class="py-4 mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button"
+                                sec:authorize="hasRole('ROLE_ADMIN')"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#agregarProducto">
+                            <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2 Sección donde se muestra la ventana modal de agregar productos-->
+
+        <div th:fragment="agregarProducto">
+            <div id="agregarProducto"
+                 class="modal fade"
+                 tabindex="-1">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">[[#{producto.agregar}]]</h5>
+                            <button type="button"
+                                    class="btn btn-close"
+                                    data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <form th:action="@{/producto/guardar}"
+                              th:object="${producto}"
+                              method="post"
+                              class="was-validated"
+                              enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label>[[#{producto.categoria}]]</label>
+                                    <select name="categoria.idCategoria"
+                                            class="form-control">
+                                        <option th:each="c : ${categorias}"
+                                                th:value="${c.idCategoria}">
+                                            [[${c.nombre}]]
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label>[[#{producto.nombre}]]</label>
+                                    <input type="text" class="form-control"
+                                           name="nombre" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label>[[#{producto.descripcion}]]</label>
+                                    <textarea class="form-control"
+                                              name="descripcion" rows="3">
+                                    </textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label>[[#{producto.precio}]]</label>
+                                    <input type="number" class="form-control"
+                                           name="precio" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label>[[#{producto.existencias}]]</label>
+                                    <input type="number" class="form-control"
+                                           name="existencias" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label>[[#{producto.imagen}]]</label>
+                                    <input type="file" class="form-control"
+                                           onchange="readURL(this);"
+                                           name="imagenFile"/>
+                                    <img id="blah" src="#" alt="no data" height="200"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class=""/> [[#{accion.guardar}]]
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        
+        
+        
+        <!-- 3 Sección donde se muestran los tabs de las categorías-->
 
         <section th:fragment="tabsCategorias" class="p-4 mb-4">
             <div class="row">
@@ -29,10 +122,95 @@
                     </li>
                 </ul>
             </div>
-
         </section>
+        
+        
+        
+        
+        <!-- 4 Sección para modificar una producto-->
 
-        <!-- 2 Sección donde se muestran las tarjetas de los poductos-->
+        <section th:fragment="editarProducto" class="mb-5">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form th:action="@{/producto/guardar}"
+                          th:object="${producto}"
+                          method="post"
+                          class="was-validated"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="idProducto" th:field="*{idProducto}"/>  <!--información escondida -->
+                        <input type="hidden" name="imagen" th:field="*{imagen}"/>
+                        <div class="row py-4 mb-4">
+                            <div class="col-md-4 d-grid">
+                                <a th:href="@{/producto/listado}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-left"></i>[[#{accion.regresar}]]
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-grid">
+                                <a th:href="@{/producto/eliminar/}+${producto.idProducto}" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>[[#{accion.eliminar}]]
+                                </a>
+                            </div>
+                            <div class="col-md-4 d-grid">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-check"></i>[[#{accion.guardar}]]
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label>[[#{producto.categoria}]]</label>
+                                        <select name="categoria.idCategoria"
+                                                th:field="*{categoria.idCategoria}"
+                                                class="form-control">
+                                            <option th:each="c : ${categorias}"
+                                                    th:value="${c.idCategoria}">
+                                                [[${c.nombre}]]
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>[[#{producto.nombre}]]</label>
+                                        <input type="text" class="form-control"
+                                               name="nombre" th:field="*{nombre}" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>[[#{producto.descripcion}]]</label>
+                                        <textarea class="form-control"
+                                                  name="descripcion" th:field="*{descripcion}" rows="3">
+                                        </textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>[[#{producto.precio}]]</label>
+                                        <input type="number" class="form-control"
+                                               name="precio" th:field="*{precio}" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>[[#{producto.existencias}]]</label>
+                                        <input type="number" class="form-control"
+                                               name="existencias" th:field="*{existencias}" required="true"/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>[[#{producto.imagen}]]</label>
+                                        <input type="file" class="form-control"
+                                               onchange="readURL(this)";
+                                               name="imagenFile"/>
+                                        <img id="blah" src="#" alt="no data" height="200"/>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+
+        <!-- 5 Sección donde se muestran las tarjetas de los poductos-->
         <section th:fragment="tarjetas" class="p-4 mb-4">
             <div class="row row-cols-4 justify-content-center">
                 <div class="card me-5 mb-5 d-flex flex-column" style="width: 16rem;" th:each="p : ${productos}">
@@ -46,13 +224,20 @@
                         <form class="mt-auto">
                             <input type="hidden" name="idProducto" th:value="${p.idProducto}" />
                             <input type="hidden" name="existencias" th:value="${p.existencias}" />
-                            <button type="button" onclick="addCart(this)" class="btn btn-primary">
+                            <a th:href="@{/producto/verProducto/}+${p.idProducto}" class="btn btn-primary mb-2" th:style="${#authorization.expression('hasRole(''ROLE_ADMIN'')')} ? 'width: 100%;' : 'width: 140px;'">
                                 <i class="fas fa-eye"></i> Ver producto
-                                <button type="button"
-                                        onclick="addCart(this.form)"
-                                        class="btn btn-light ms-2">
-                                    <i class="fas fa-cart-arrow-down"></i>
-                                </button>
+                            </a>
+                            <a th:href="@{/producto/eliminar/}+${p.idProducto}" class="btn btn-danger mb-2" style="width: 100%;" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                            </a>
+                            <a th:href="@{/producto/modificar/}+${p.idProducto}" class="btn btn-success mb-2" style="width: 100%;" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]
+                            </a>
+                            <button type="button"
+                                    onclick="addCart(this.form)"
+                                    sec:authorize="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_VENDEDOR')"
+                                    class="btn btn-light ms-2">
+                                <i class="fas fa-cart-arrow-down"></i>
                             </button>
                         </form>
                     </div>
