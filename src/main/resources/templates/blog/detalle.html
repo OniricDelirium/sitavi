@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-center mt-5 mb-5 px-3">
             <div class="content-box">
                 <h2 th:text="${receta.nombre}">Nombre</h2>
-                <img th:src="@{${receta.imagen}}"
+                <img th:src="'/imagenes_productos' + ${receta.imagen}"
                      class="img-fluid mb-4"
                      alt="Imagen no disponible"/>
 
