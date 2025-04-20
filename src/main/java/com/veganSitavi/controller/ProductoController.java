@@ -64,4 +64,11 @@ public class ProductoController {
 
         return "redirect:/productos/listado";
     }
+    
+    @GetMapping("/verProducto/{idProducto}")
+    public String verProducto(Model model, Producto producto) {
+        var productoElegido = productoService.getProducto(producto);
+        model.addAttribute("producto",productoElegido);
+        return "/productos/verProducto";
+    }
 }
