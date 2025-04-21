@@ -4,7 +4,7 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
+        <title>Carrito</title>
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
@@ -33,12 +33,10 @@
                                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
                                     <div class="col" th:each="item : ${listaItems}">
                                         <div class="card flex-row bg-secondary-subtle border-light shadow-sm">
-                                            <!-- Imagen del producto -->
                                             <img th:src="'/' + ${item.imagen}" alt="noData"
                                                  style="height: 180px; width: 180px; object-fit: cover;"
                                                  class="rounded-start"></img>
 
-                                            <!-- Info del producto -->
                                             <div class="card-body d-flex flex-column justify-content-between text-dark">
                                                 <div>
                                                     <h5 class="card-title">[[${item.nombre}]]</h5>
@@ -53,7 +51,6 @@
                                                     </p>
                                                 </div>
 
-                                                <!-- Botones -->
                                                 <div class="d-flex gap-2 mt-2">
                                                     <a class="btn btn-danger btn-sm w-100"
                                                        th:href="@{/carrito/eliminar/}+${item.idProducto}">
@@ -69,7 +66,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Total y acciones (solo si hay productos) -->
                                 <div class="mt-4">
                                     <div class="card bg-white border-0 shadow text-center">
                                         <div class="card-body">
@@ -100,7 +96,6 @@
                                 </div>
                             </div>
 
-                            <!-- Carrito vacío -->
                             <div class="text-center p-2 text-dark" th:if="${listaItems == null or listaItems.empty}">
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
@@ -109,7 +104,6 @@
                 </div>
             </div>
 
-            <!-- Espacio adicional antes del footer -->
             <div class="mb-5"></div>
         </section>
 
@@ -119,7 +113,6 @@
 
         <section th:fragment="editarItem" class="mt-5 ms-5">
             <div class="row row-cols-2 ms-4">
-                <!-- Card blanca con datos del producto y botón regresar -->
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3">
@@ -139,7 +132,6 @@
                     </div>
                 </div>
 
-                <!-- Card transparente con imagen, formulario y botones -->
                 <div class="card border-0 bg-transparent">
                     <div class="card-body">
                         <figure>
@@ -173,7 +165,6 @@
                 </div>
             </div>
 
-            <!-- Espacio como footer para separación visual -->
             <div class="mt-5 mb-5"></div>
         </section>
 

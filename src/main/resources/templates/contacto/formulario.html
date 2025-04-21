@@ -4,14 +4,13 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
+        <title>Contacto</title>
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
 
         <main>
-            <section th:replace="~{layout/plantilla :: offcanva}"/>
             <section th:replace ="~{contacto/fragmentos :: formulario}"/>
         </main>
 

@@ -4,7 +4,7 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
+        <title>Productos</title>
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
@@ -213,6 +213,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -279,7 +280,6 @@
                             <p class="card-text"><strong>[[#{producto.existencias} + ':']]</strong> [[${producto.existencias}]]</p>
                             <p class="card-text"><strong>[[#{producto.categoria} + ':']]</strong> [[${producto.categoria.nombre}]]</p>
 
-                            <!-- Contenedor para los botones lado a lado -->
                             <div class="d-flex flex-wrap mt-3">
                                 <a th:href="@{/productos/listado}" class="btn btn-primary me-2 mb-2">
                                     <i class="fas fa-arrow-left"></i> [[#{accion.volverCatalogo}]]

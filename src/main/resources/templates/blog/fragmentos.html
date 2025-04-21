@@ -4,7 +4,7 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
+        <title>Blog</title>
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
@@ -13,7 +13,6 @@
         <section th:fragment="btnAgregar" class="py-2 mb-4 mt-5 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="container">
                 <div class="row">
-                    <!-- Botón Agregar centrado y con buen padding -->
                     <div class="col-auto">
                         <button type="button"
                                 class="btn btn-primary d-flex align-items-center gap-2 px-4 py-2 shadow rounded-pill"
@@ -84,7 +83,6 @@
 
         <!-- 2 Sección de las recetas -->
         <section th:fragment="recetas" class="container my-5">
-            <!-- Centrado del contenido principal -->
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center mb-4">
                     <div class="content-box">
@@ -102,7 +100,6 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="content-box d-flex flex-wrap justify-content-center gap-4">
-                        <!-- Tarjetas de recetas -->
                         <div th:each="r : ${recetas}" class="card shadow-sm"
                              style="width: 300px; height: 420px;">
                             <img th:src="'/imagenes_productos' + ${r.imagen}"
@@ -135,7 +132,6 @@
                 <h2 class="section-title">Esto pasa cuando... Consumís nuestra Granola Sitavi. </h2>
                 <p class="text-muted">Descubrí lo que le pasa a tu cuerpo cuando probás nuestros ingredientes</p>
             </div>
-            <!-- Galería de imágenes -->
             <div class="row justify-content-center">
                 <div class="col-md-3 col-sm-6 mb-4" >
                     <div class="card h-100">
@@ -215,7 +211,6 @@
                             </button>
                         </div>
 
-                        <!-- Formulario -->
                         <div class="card">
                             <div class="card-body">
 
