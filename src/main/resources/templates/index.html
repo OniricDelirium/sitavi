@@ -22,29 +22,10 @@
                         <h1>[[#{plantilla.bienvenido}]] <span class="brand">[[#{aplicacion.titulo.mayus}]]</span></h1> <!-- Brand solo tiene el estilo para texto Bold -->
                     </div>
                 </section>
-
-                <section class="about-section container my-5">
-                    <div class="content-box"> <!-- Cuadro en blanco -->
-                        <div class="row align-items-center">
-                            <!-- Columna Izquierda -->
-                            <div class="col-md-4 text-left">
-                                <h2 class="section-title text-center">[[#{plantilla.quienessomos}]]</h2>
-                                <p class="text-muted text-center">[[#{aplicacion.titulo}]]</p>
-                                <a href="#" class="more-info d-block text-center mx-auto">[[#{plantilla.masinformacion}]]</a>
-                            </div>
-
-                            <!-- Columna Derecha -->
-                            <div class="col-md-8">
-                                <p th:text="#{quienesSomos.mensaje}"></p>
-                                <p th:text="#{quienesSomos.mensaje2}"></p>
-                                <p th:text="#{quienesSomos.mensaje3}"></p>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
             </div>
         </main>
+        
+        <section th:replace="~{productos/fragmentos :: tarjetas}"/>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
