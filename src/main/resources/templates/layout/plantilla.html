@@ -99,7 +99,7 @@
                         <li class="nav-item px-2">
                             <a class="nav-menu-link nav-link d-flex align-items-center" th:href="@{/login}">
                                 <i class="fas fa-user-circle fa-lg me-2"></i>
-                                <span class="d-none d-sm-inline text-nowrap">Iniciar sesión</span>
+                                <span class="d-none d-sm-inline text-nowrap">[[#{sesion.iniciar}]]</span>
                             </a>
                         </li>
                     </ul>
@@ -133,7 +133,7 @@
                     <div id="carritoContenido" th:replace="~{carrito/fragmentos :: listado}"></div>
 
                     <div th:unless="${listaItems != null}">
-                        <p class="text-white">Tu carrito está vacío.</p>
+                        <p class="text-white">[[#{lista.vacia}]]</p>
                     </div>
 
                 </div>
@@ -147,30 +147,30 @@
                     <div class="col-md-3 mb-4">
                         <img th:src="@{/imagenes_productos/Vegan-Sitavi.jpg}" alt="Logo" height="60" class="mb-2"/>
                         <p class="small">
-                            Vegan Sitavi es tu tienda de confianza para productos 100% naturales y veganos. Salud, sabor y sostenibilidad en cada compra.
+                            [[#{footer.vegan}]]
                         </p>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <h5 class="text-uppercase mb-3">Navegación</h5>
+                        <h5 class="text-uppercase mb-3">[[#{footer.navegacion}]]</h5>
                         <ul class="list-unstyled">
-                            <li><a class="text-white text-decoration-none" th:href="@{/}">Inicio</a></li>
-                            <li><a class="text-white text-decoration-none" th:href="@{/productos/listado}">Productos</a></li>
-                            <li><a class="text-white text-decoration-none" th:href="@{/blog/listado}">Blog</a></li>
-                            <li><a class="text-white text-decoration-none" th:href="@{/quienesSomos/listado}">¿Quiénes somos?</a></li>
-                            <li><a class="text-white text-decoration-none" th:href="@{/contacto/formulario}">Contacto</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/}">[[#{plantilla.inicio}]]</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/productos/listado}">[[#{plantilla.productos}]]</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/blog/listado}">[[#{plantilla.blog}]]</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/quienesSomos/listado}">[[#{plantilla.quienessomos}]]</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/contacto/formulario}">[[#{plantilla.contacto}]]</a></li>
                         </ul>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <h5 class="text-uppercase mb-3">Contáctanos</h5>
+                        <h5 class="text-uppercase mb-3">[[#{plantilla.contactanos}]]</h5>
                         <p><i class="fas fa-envelope me-2"></i> contacto@vegansitavi.com</p>
                         <p><i class="fas fa-phone me-2"></i> +506 8317 3625</p>
                         <p><i class="fas fa-map-marker-alt me-2"></i> Costa Rica</p>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <h5 class="text-uppercase mb-3">Síguenos</h5>
+                        <h5 class="text-uppercase mb-3">[[#{plantilla.siguenos}]]</h5>
                         <div class="d-flex gap-3 justify-content-center justify-content-md-start">
                             <a href="https://www.facebook.com/vegansitavicr" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
                             <a href="https://www.instagram.com/vegansitavi" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
