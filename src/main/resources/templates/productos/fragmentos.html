@@ -12,16 +12,17 @@
         
         <!-- 1 Sección donde se muestra el botón de agregar producto-->
 
-        <section th:fragment="btnAgregar" class="py-4 mb-4" sec:authorize="hasRole('ROLE_ADMIN')">
+        <section th:fragment="btnAgregar" class="py-4 mb-4 mt-4 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-auto">
                         <button type="button"
-                                sec:authorize="hasRole('ROLE_ADMIN')"
-                                class="btn btn-primary btn-block"
+                                class="btn btn-primary d-flex align-items-center gap-2 px-4 py-2 shadow rounded-pill"
                                 data-bs-toggle="modal"
-                                data-bs-target="#agregarProducto">
-                            <i class="fas fa-plus"></i> [[#{producto.agregar}]]
+                                data-bs-target="#agregarProducto"
+                                style="font-size: 1.1rem;">
+                            <i class="fas fa-plus fa-lg"></i>
+                            <span>[[#{producto.agregar}]]</span>
                         </button>
                     </div>
                 </div>
@@ -140,23 +141,33 @@
                           enctype="multipart/form-data">
                         <input type="hidden" name="idProducto" th:field="*{idProducto}"/>  <!--información escondida -->
                         <input type="hidden" name="imagen" th:field="*{imagen}"/>
-                        <div class="row py-4 mb-4">
-                            <div class="col-md-4 d-grid">
-                                <a th:href="@{/producto/listado}" class="btn btn-primary">
-                                    <i class="fas fa-arrow-left"></i>[[#{accion.regresar}]]
+                        <div class="row justify-content-center gap-3 py-4 mb-4">
+                            <div class="col-auto">
+                                <a th:href="@{/producto/listado}"
+                                   class="btn btn-primary d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                                   style="min-width: 220px;">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span>[[#{accion.regresar}]]</span>
                                 </a>
-                            </div>
-                            <div class="col-md-4 d-grid">
-                                <a th:href="@{/producto/eliminar/}+${producto.idProducto}" class="btn btn-danger">
-                                    <i class="fas fa-trash"></i>[[#{accion.eliminar}]]
-                                </a>
-                            </div>
-                            <div class="col-md-4 d-grid">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check"></i>[[#{accion.guardar}]]
-                                </button>
                             </div>
 
+                            <div class="col-auto">
+                                <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                                   class="btn btn-danger d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                                   style="min-width: 220px;">
+                                    <i class="fas fa-trash"></i>
+                                    <span>[[#{accion.eliminar}]]</span>
+                                </a>
+                            </div>
+
+                            <div class="col-auto">
+                                <button type="submit"
+                                        class="btn btn-success d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                                        style="min-width: 220px;">
+                                    <i class="fas fa-check"></i>
+                                    <span>[[#{accion.guardar}]]</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="card">

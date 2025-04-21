@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="dropdown-center">
-                            <button class="btn dropdown-toggle ms-5 me-4 px-5" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white">
+                            <button class="btn dropdown-toggle me-5 px-5" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white">
                                 [[#{plantilla.idioma}]]
                             </button>
                             <ul class="dropdown-menu">
@@ -95,19 +95,14 @@
                 </div>
 
                 <div>
-                    <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                        <li class="nav-item px-2">
-                            <a class="nav-menu-link nav-link" th:href="@{/login}">
-                                <i class='fas fa-sign-in-alt'></i>
-                            </a>
-                        </li>                            
-                    </ul>
-                    <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                        <li class="nav-item text-white my-auto">
-                            <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle"/>
-                            <span sec:authentication='name'>Santi</span>
+                    <ul class="navbar-nav" sec:authorize="isAuthenticated()" style="display: flex; align-items: center; justify-content: flex-end;">
+                        <li class="nav-item text-white my-auto d-flex align-items-center">
+                            <!-- Nombre estilizado -->
+                            <span class="me-3 text-capitalize fw-bold fs-5" style="color: #f1f1f1;" sec:authentication="name">Santi</span>
+                            <!-- Imagen -->
+                            <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle me-2"/>
                         </li>
-                        <li class="nav-item my-auto">
+                        <li class="nav-item my-auto me-3">
                             <form method="post" th:action="@{/logout}">
                                 <button class="btn btn-dark">
                                     <i class="fas fa-sign-out-alt"></i>

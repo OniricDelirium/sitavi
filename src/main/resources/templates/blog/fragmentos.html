@@ -10,17 +10,18 @@
     <body>
 
         <!-- 1 Sección donde se muestran las recetas -->
-        <section th:fragment="btnAgregar" class="py-2 mb-4 bg-light">
+        <section th:fragment="btnAgregar" class="py-2 mb-4 mt-5 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="container">
-                <div class="row gap-3">
-
-                    <!-- Botón Agregar -->
-                    <div class="col-md-3 d-grip">
+                <div class="row">
+                    <!-- Botón Agregar centrado y con buen padding -->
+                    <div class="col-auto">
                         <button type="button"
-                                class="btn btn-primary"
+                                class="btn btn-primary d-flex align-items-center gap-2 px-4 py-2 shadow rounded-pill"
                                 data-bs-toggle="modal"
-                                data-bs-target="#modalAgregarReceta">
-                            <i class="fas fa-plus"></i> [[#{receta.agregar}]]
+                                data-bs-target="#modalAgregarReceta"
+                                style="font-size: 1.1rem;">
+                            <i class="fas fa-plus fa-lg"></i>
+                            <span>[[#{receta.agregar}]]</span>
                         </button>
                     </div>
                 </div>
@@ -82,50 +83,43 @@
         </div>
 
         <!-- 2 Sección de las recetas -->
-        <section th:fragment="recetas" class="container mx-auto">
+        <section th:fragment="recetas" class="container my-5">
             <!-- Centrado del contenido principal -->
             <div class="row justify-content-center">
-                <div class="col-md-10 mb-4">
+                <div class="col-md-8 text-center mb-4">
                     <div class="content-box">
-                        <div class="text-center">
-                            <h2 class="section-title">[[#{blog.recetas}]]</h2>
-                            <p class="text-muted">[[#{aplicacion.titulo}]]</p>
-                        </div>
-
-                        <h5 class="brand text-center mb-3">[[#{recetas.mensaje}]]</h5>
-                        <p class="justify">[[#{recetas.mensaje2}]]</p>
-                        <p class="justify">[[#{recetas.mensaje3}]]</p>
-                        <p class="text-center brand" style="color: #4CAF50">[[#{recetas.mensaje4}]]</p>
+                        <h2 class="section-title">[[#{blog.recetas}]]</h2>
+                        <p class="text-muted">[[#{aplicacion.titulo}]]</p>
+                        <h5 class="brand mb-3">[[#{recetas.mensaje}]]</h5>
+                        <p class="text-justify">[[#{recetas.mensaje2}]]</p>
+                        <p class="text-justify">[[#{recetas.mensaje3}]]</p>
+                        <p class="brand" style="color: #4CAF50">[[#{recetas.mensaje4}]]</p>
                     </div>
                 </div>
             </div>
 
             <!-- Listado de las recetas -->
             <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="content-box d-flex flex-wrap 
-                         justify-content-center gap-4">
+                <div class="col-md-8">
+                    <div class="content-box d-flex flex-wrap justify-content-center gap-4">
                         <!-- Tarjetas de recetas -->
-                        <div th:each="r : ${recetas}" class="card" 
-                             style="width: 300px; height: 400px;">
+                        <div th:each="r : ${recetas}" class="card shadow-sm"
+                             style="width: 300px; height: 420px;">
                             <img th:src="'/imagenes_productos' + ${r.imagen}"
                                  class="card-img-top"
                                  alt="Imagen no disponible"
-                                 style="height: 300px; object-fit: cover;" />
-                            <div class="card-body d-flex flex-column justify-content-between p-2">
-                                <h5 class="card-title text-center" 
-                                    style="font-size: 24px;">[[${r.nombre}]]</h5>
+                                 style="height: 250px; object-fit: cover;" />
+                            <div class="card-body d-flex flex-column justify-content-between p-3">
+                                <h5 class="card-title text-center fs-5">[[${r.nombre}]]</h5>
                                 <div class="text-center mt-auto">
-                                    <a class="btn btn-primary" 
+                                    <a class="btn btn-primary mb-1"
                                        th:href="@{/blog/detalle/{id}(id=${r.idReceta})}"
-                                       role="button">Ver más</a>
-
-                                    <a th:href="@{/receta/eliminar/}+${r.idReceta}"
-                                       class="btn btn-danger">
+                                       role="button"><i class="fas fa-eye"></i> Ver más</a>
+                                    <a th:href="@{/blog/eliminar/}+${r.idReceta}"
+                                       class="btn btn-danger mb-1" sec:authorize="hasRole('ROLE_ADMIN')">
                                         <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-
-                                    <a th:href="@{/receta/modificar/}+${r.idReceta}"
-                                       class="btn btn-success">
+                                    <a th:href="@{/blog/modificar/}+${r.idReceta}"
+                                       class="btn btn-success" sec:authorize="hasRole('ROLE_ADMIN')">
                                         <i class="fas fa-pencil"></i> [[#{accion.modificar}]]</a>
                                 </div>
                             </div>
@@ -188,76 +182,77 @@
 
         <!-- 4 seccion para modificar una receta -->
         <section th:fragment="editarReceta">
-            <div class="row">
-                <div class="col-md-2"></div>
+            <div class="row justify-content-center">
                 <div class="col-md-8">
                     <form th:action="@{/receta/guardar}"
                           th:object="${receta}"
                           method="post"
                           class="was-validated"
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idReceta" th:field="*{idReceta}"/>
-                        <input type="hidden" name="imagen" th:field="*{imagen}"/>
-                        <div class="row py-4 mb-4 bg-light">
-                            <div class="col-md-4 d-grip">
-                                <a th:href="@{/blog/listado}" class="btn btn-primary">
-                                    <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
-                                </a>
-                            </div>
+                        <input type="hidden" name="idReceta" th:field="*{idReceta}" />
+                        <input type="hidden" name="imagen" th:field="*{imagen}" />
 
-                            <div class="col-md-4 d-grip">
-                                <a th:href="@{/receta/eliminar}+${receta.idReceta}"
-                                   class="btn btn-danger">
-                                    <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
-                                </a>
-                            </div>
+                        <div class="d-flex justify-content-center gap-3 mt-4 mb-4 py-4 flex-wrap">
+                            <a th:href="@{/blog/listado}"
+                               class="btn btn-primary d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                               style="min-width: 220px;">
+                                <i class="fas fa-arrow-left"></i>
+                                <span>[[#{accion.regresar}]]</span>
+                            </a>
 
-                            <div class="col-md-4 d-grip">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check"></i> [[#{accion.guardar}]]
-                                </button>
-                            </div>
+                            <a th:href="@{/receta/eliminar}+${receta.idReceta}"
+                               class="btn btn-danger d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                               style="min-width: 220px;">
+                                <i class="fas fa-trash"></i>
+                                <span>[[#{accion.eliminar}]]</span>
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success d-flex align-items-center justify-content-center gap-2 px-4 py-2 shadow rounded-pill"
+                                    style="min-width: 220px;">
+                                <i class="fas fa-check"></i>
+                                <span>[[#{accion.guardar}]]</span>
+                            </button>
                         </div>
 
-                        <div class="row">
-                            <div class="card">
-                                <div class="card-body">
+                        <!-- Formulario -->
+                        <div class="card">
+                            <div class="card-body">
 
-                                    <div class="mb-3">
-                                        <label>[[#{receta.nombre}]]</label>
-                                        <input type="text" class="form-control"
-                                               name="nombre"
-                                               th:field="*{nombre}"
-                                               required="true"/>
-                                    </div>
+                                <div class="mb-3">
+                                    <label>[[#{receta.nombre}]]</label>
+                                    <input type="text" class="form-control"
+                                           name="nombre"
+                                           th:field="*{nombre}"
+                                           required="true"/>
+                                </div>
 
-                                    <div class="mb-3">
-                                        <label>[[#{receta.ingredientes}]]</label>
-                                        <textarea class="form-control"
-                                                  name="ingredientes"
-                                                  th:field="*{ingredientes}"
-                                                  rows="3"></textarea>
-                                    </div>
+                                <div class="mb-3">
+                                    <label>[[#{receta.ingredientes}]]</label>
+                                    <textarea class="form-control"
+                                              name="ingredientes"
+                                              th:field="*{ingredientes}"
+                                              rows="3"></textarea>
+                                </div>
 
-                                    <div class="mb-3">
-                                        <label>[[#{receta.preparacion}]]</label>
-                                        <textarea class="form-control"
-                                                  name="preparacion"
-                                                  th:field="*{preparacion}"
-                                                  rows="3"></textarea>
-                                    </div>
+                                <div class="mb-3">
+                                    <label>[[#{receta.preparacion}]]</label>
+                                    <textarea class="form-control"
+                                              name="preparacion"
+                                              th:field="*{preparacion}"
+                                              rows="3"></textarea>
+                                </div>
 
-                                    <div class="mb-3">
-                                        <label>[[#{receta.imagen}]]</label>
-                                        <input type="file" class="form-control"
-                                               onchange="readURL(this);"
-                                               name="imagenFile"/>
-                                        <img id="blah" src="#" alt="no data" height="200"/>
-                                    </div>
+                                <div class="mb-3">
+                                    <label>[[#{receta.imagen}]]</label>
+                                    <input type="file" class="form-control"
+                                           onchange="readURL(this);"
+                                           name="imagenFile"/>
+                                    <img id="blah" src="#" alt="no data" height="200"/>
                                 </div>
                             </div>
                         </div>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </section>
