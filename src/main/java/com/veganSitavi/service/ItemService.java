@@ -1,8 +1,13 @@
 package com.veganSitavi.service;
 
+import com.veganSitavi.domain.Factura;
 import com.veganSitavi.domain.Item;
+import com.veganSitavi.domain.Usuario;
+import com.veganSitavi.domain.Venta;
+import com.veganSitavi.repository.FacturaRepository;
 import com.veganSitavi.repository.ProductoRepository;
 import com.veganSitavi.repository.UsuarioRepository;
+import com.veganSitavi.repository.VentaRepository;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,67 +136,67 @@ public class ItemService {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private ProductoRepository productoRepository;  // para poder bajar la cantidad de producto
-//    @Autowired
-//    private FacturaRepository facturaRepository; // para poder insertar los registros de las ventas
-//    @Autowired
-//    private VentaRepository ventaRepository;
-//    
-//    public void facturar() {
-//        //Se debe recuperar el usuario autenticado y obtener su idUsuario
-//        String username = "";
-//        var principal = SecurityContextHolder
-//                .getContext()
-//                .getAuthentication()
-//                .getPrincipal();
-//
-//        if (principal instanceof UserDetails userDetails) {
-//            username = userDetails.getUsername();
-//        } else {
-//            if (principal != null) {
-//                username = principal.toString();
-//            }
-//        }
-//
-//        if (username.isBlank()) {
-//            System.out.println("username en blanco...");
-//            return;
-//        }
-//
-//        Usuario usuario = usuarioRepository.findByUsername(username);
-//        if (usuario == null) {
-//            System.out.println("Usuario no existe en usuarios...");
-//            return;
-//        }
-//
-//        //Se debe registrar la factura incluyendo el usuario
-//        Factura factura = new Factura(usuario.getIdUsuario());
-//        factura = facturaRepository.save(factura);
-//
-//        //Se debe registrar las ventas de cada producto -actualizando existencias-
-//        @SuppressWarnings("unchecked")
-//        List<Item> listaItems = (List) session.getAttribute("listaItems");
-//        if (listaItems != null) {
-//            double total = 0;
-//            for (Item i : listaItems) {
-//                var producto = productoRepository.getReferenceById(i.getIdProducto());
-//                if (producto.getExistencias() >= i.getCantidad()) {
-//                    Venta venta = new Venta(factura.getIdFactura(),
-//                            i.getIdProducto(),
-//                            i.getPrecio(),
-//                            i.getCantidad());
-//                    ventaRepository.save(venta);
-//                    producto.setExistencias(producto.getExistencias() - i.getCantidad());
-//                    productoRepository.save(producto);
-//                    total += i.getCantidad() * i.getPrecio();
-//                }
-//            }
-//
-//            //Se debe registrar el total de la venta en la factura
-//            factura.setTotal(total);
-//            facturaRepository.save(factura);
-//
-//            //Se debe limpiar el carrito la lista...
-//            listaItems.clear();
-//        }
-//    }
+    @Autowired
+    private FacturaRepository facturaRepository; // para poder insertar los registros de las ventas
+    @Autowired
+    private VentaRepository ventaRepository;
+    
+    public void facturar() {
+        //Se debe recuperar el usuario autenticado y obtener su idUsuario
+        String username = "";
+        var principal = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        if (principal instanceof UserDetails userDetails) {
+            username = userDetails.getUsername();
+        } else {
+            if (principal != null) {
+                username = principal.toString();
+            }
+        }
+
+        if (username.isBlank()) {
+            System.out.println("username en blanco...");
+            return;
+        }
+
+        Usuario usuario = usuarioRepository.findByUsername(username);
+        if (usuario == null) {
+            System.out.println("Usuario no existe en usuarios...");
+            return;
+        }
+
+        //Se debe registrar la factura incluyendo el usuario
+        Factura factura = new Factura(usuario.getIdUsuario());
+        factura = facturaRepository.save(factura);
+
+        //Se debe registrar las ventas de cada producto -actualizando existencias-
+        @SuppressWarnings("unchecked")
+        List<Item> listaItems = (List) session.getAttribute("listaItems");
+        if (listaItems != null) {
+            double total = 0;
+            for (Item i : listaItems) {
+                var producto = productoRepository.getReferenceById(i.getIdProducto());
+                if (producto.getExistencias() >= i.getCantidad()) {
+                    Venta venta = new Venta(factura.getIdFactura(),
+                            i.getIdProducto(),
+                            i.getPrecio(),
+                            i.getCantidad());
+                    ventaRepository.save(venta);
+                    producto.setExistencias(producto.getExistencias() - i.getCantidad());
+                    productoRepository.save(producto);
+                    total += i.getCantidad() * i.getPrecio();
+                }
+            }
+
+            //Se debe registrar el total de la venta en la factura
+            factura.setTotal(total);
+            facturaRepository.save(factura);
+
+            //Se debe limpiar el carrito la lista...
+            listaItems.clear();
+        }
+    }
 }

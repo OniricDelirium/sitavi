@@ -24,6 +24,7 @@ function addCart(formulario){
     if (existencias > 0){
         var ruta  = "/carrito/agregar/"+idProducto;
         $("#resultBlock").load(ruta);
+        $("#carritoContenido").load("/carrito/fragmento");
         
     }else{
         window.alert("No hay existencias..");

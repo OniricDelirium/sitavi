@@ -4,20 +4,19 @@
       xmlns:th="http://thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{/layout/plantilla :: head}">
-        <title>Pruebas</title>
+        <title>VerProducto</title>
         <meta charset="UTF-8"/> <!-- Alfabeto -->
     </head>
     <body>
         
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <section th:replace = "~{productos/fragmentos :: btnAgregar}"/>
-        <section th:replace = "~{productos/fragmentos :: agregarProducto}"/>
-        <section th:replace="~{layout/plantilla :: offcanva}"/>
-        <section th:replace = "~{productos/fragmentos :: tabsCategorias}"/>
-        <section th:replace = "~{productos/fragmentos :: tarjetas}"/>
+        <main>
+            <section th:replace="~{productos/fragmentos :: verProducto}" />
+            <section th:replace="~{layout/plantilla :: offcanva}" />
+        </main>
         
-
+        
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
