@@ -9,8 +9,7 @@
     </head>
     <body>
 
-        <!-- 1 Sección donde se muestran los tabs de las categorías-->
-
+        <!-- 1 Sección de quiénes somos -->
         <section th:fragment="contQuienesSomos" class="about-section container my-5">
             <div class="content-box"> <!-- Cuadro en blanco -->
                 <div class="row align-items-center">
@@ -29,6 +28,25 @@
 
                 </div>
             </div>
+        </section>
+        
+        <!-- 2 Sección donde se muestra la mision y vision-->
+        <section th:fragment="misionVision" class="about-section container my-5">
+            <div class="content-box"> <!-- Cuadro en blanco -->
+                <div class="row justify-content-between px-3">
+                    <!-- Columna Izquierda - Misión -->
+                    <div class="col-md-5">
+                        <h2 class="section-title text-center py-2">[[#{plantilla.mision}]]</h2>
+                        <p class="justify">[[#{mision}]]</p>
+                    </div>
+
+                    <!-- Columna Derecha - Visión -->
+                    <div class="col-md-5">
+                        <h2 class="section-title text-center py-2">[[#{plantilla.vision}]]</h2>
+                        <p class="justify">[[#{vision}]]</p>
+                    </div>
+                </div>
+            </div>  
         </section>
         
     </body>

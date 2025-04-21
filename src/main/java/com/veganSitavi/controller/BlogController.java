@@ -1,7 +1,6 @@
 package com.veganSitavi.controller;
 
 import com.veganSitavi.domain.Receta;
-import com.veganSitavi.domain.Receta;
 import com.veganSitavi.service.FirebaseStorageService;
 import com.veganSitavi.service.RecetaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +33,13 @@ public class BlogController {
         model.addAttribute("receta", receta);
         return "/blog/detalle";
     }
-    
+
     @GetMapping("/eliminar/{idReceta}")
     public String eliminar(Receta receta) {
         recetaService.delete(receta);
-        
         return "redirect:/blog/listado";
     }
-    
+
     @GetMapping("/modificar/{idReceta}")
     public String modificar(Receta receta, Model model) {
         receta=recetaService.getReceta(receta);

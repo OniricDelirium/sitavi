@@ -18,9 +18,9 @@ public class RecetaService {
         var lista = recetaRepository.findAll();
         return lista;
     }
-
-    @Transactional(readOnly = true)
-    public Receta getReceta(Receta receta) {
+    
+    @Transactional(readOnly=true)
+    public Receta getReceta(Receta receta){
         return recetaRepository.findById(receta.getIdReceta()).orElse(null);
     }
 
@@ -38,4 +38,5 @@ public class RecetaService {
     public void delete(Receta receta) {
         recetaRepository.delete(receta);
     }
+
 }
