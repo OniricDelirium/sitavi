@@ -7,6 +7,7 @@ import com.veganSitavi.domain.Producto;
 import com.veganSitavi.service.ItemService;
 import com.veganSitavi.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +52,8 @@ public class CarritoController {
         return new ModelAndView("/carrito/fragmentos :: verCarrito");  
     }                                         
     
+    @Value("${tcambio}")
+    private double tCambio;
     
     @GetMapping("/listado")  
     public String listado(Model model){
@@ -59,6 +62,9 @@ public class CarritoController {
         
         model.addAttribute("listaItems",lista);
         model.addAttribute("totalCompra", totalCompra);
+        
+        model.addAttribute("totalDolares", (double) (Math.round(totalCompra/tCambio*100)/100));
+        model.addAttribute("precioVenta", tCambio);
         
         return "/carrito/listado";  
     }                       

@@ -10,8 +10,10 @@
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <section th:replace="~{layout/plantilla :: offcanva}"/>
-        <section th:replace ="~{contacto/fragmentos :: formulario}"/>
+        <main>
+            <section th:replace="~{layout/plantilla :: offcanva}"/>
+            <section th:replace ="~{contacto/fragmentos :: formulario}"/>
+        </main>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>

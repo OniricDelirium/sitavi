@@ -11,13 +11,13 @@
         
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <section th:replace = "~{productos/fragmentos :: btnAgregar}"/>
-        <section th:replace = "~{productos/fragmentos :: agregarProducto}"/>
-        <section th:replace="~{layout/plantilla :: offcanva}"/>
-        <section th:replace = "~{productos/fragmentos :: tabsCategorias}"/>
-        <section th:replace = "~{productos/fragmentos :: tarjetas}"/>
+        <main>
+            <section th:replace = "~{productos/fragmentos :: btnAgregar}"/>
+            <section th:replace = "~{productos/fragmentos :: agregarProducto}"/>
+            <section th:replace = "~{productos/fragmentos :: tabsCategorias}"/>
+            <section th:replace = "~{productos/fragmentos :: tarjetas}"/>
+        </main>
         
-
         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

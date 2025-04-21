@@ -73,20 +73,27 @@
                                 <div class="mt-4">
                                     <div class="card bg-white border-0 shadow text-center">
                                         <div class="card-body">
-                                            <h3 class="fs-2 text-primary mb-2">
-                                                <i class="fa-solid fa-cart-shopping"></i> [[#{carrito.totalCompra}]]
-                                            </h3>
-                                            <h4 class="fs-4 mb-4 text-dark">[[${totalCompra}]]</h4>
+                                            <h3 class="fs-2 text-primary mb-2"><i class="fa-solid fa-cart-shopping"></i> [[#{carrito.totalCompra}]]</h3>
+                                            <h4><i class="fas fa-money-bill-alt"></i>₡[[${#numbers.formatDecimal (totalCompra,1,'DEFAULT',2,'DEFAULT')}]]</h4>
+                                            <h4><i class="far fa-money-bill-alt"></i> ¢[[${#numbers.formatDecimal(totalDolares,1,'DEFAULT',2,'DEFAULT')}]]</h4>
+                                            <p>$1 = ¢[[${#numbers.formatDecimal(precioVenta,1,'DEFAULT',2,'DEFAULT')}]]</p>
 
                                             <div class="d-flex flex-column align-items-center gap-2">
                                                 <a th:href="@{/productos/listado}" class="btn btn-success fs-5"
                                                    style="width: 42rem; height: 3.2rem;">
                                                     <i class='fas fa-reply'></i> [[#{carrito.seguirComprando}]]
                                                 </a>
-                                                <a th:href="@{/facturar/carrito}" class="btn btn-warning fs-5"
-                                                   style="width: 42rem; height: 3.2rem;">
-                                                    <i class="fa-solid fa-check"></i> [[#{carrito.facturar}]]
-                                                </a>
+
+                                                <form action="/payment/facturar"
+                                                      method="get">
+                                                    <input type="hidden"
+                                                           name='total'
+                                                           th:value='${totalDolares}'/>
+                                                    <button class='btn btn-warning' style="width: 42rem; height: 3.2rem;"
+                                                            type='submit'>
+                                                        <i class='fab fa-cc-paypal'></i> [[#{carrito.facturar}]]
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

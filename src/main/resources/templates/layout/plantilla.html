@@ -95,11 +95,17 @@
                 </div>
 
                 <div>
+                    <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                        <li class="nav-item px-2">
+                            <a class="nav-menu-link nav-link d-flex align-items-center" th:href="@{/login}">
+                                <i class="fas fa-user-circle fa-lg me-2"></i>
+                                <span class="d-none d-sm-inline text-nowrap">Iniciar sesión</span>
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="navbar-nav" sec:authorize="isAuthenticated()" style="display: flex; align-items: center; justify-content: flex-end;">
                         <li class="nav-item text-white my-auto d-flex align-items-center">
-                            <!-- Nombre estilizado -->
                             <span class="me-3 text-capitalize fw-bold fs-5" style="color: #f1f1f1;" sec:authentication="name">Santi</span>
-                            <!-- Imagen -->
                             <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle me-2"/>
                         </li>
                         <li class="nav-item my-auto me-3">
@@ -108,7 +114,7 @@
                                     <i class="fas fa-sign-out-alt"></i>
                                 </button>
                             </form>
-                        </li>                            
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -134,9 +140,56 @@
             </div>
         </section>
 
-        <footer th:fragment="footer" class="p-2 text-white" style="background-color: #388E3C">
-            <p class="lead text-center">&COPY; [[#{plantilla.derechos}]]</p>
+        <footer th:fragment="footer" class="text-white pt-5 pb-3" style="background-color: #2e7d32">
+            <div class="container text-center text-md-start">
+                <div class="row">
+
+                    <div class="col-md-3 mb-4">
+                        <img th:src="@{/imagenes_productos/Vegan-Sitavi.jpg}" alt="Logo" height="60" class="mb-2"/>
+                        <p class="small">
+                            Vegan Sitavi es tu tienda de confianza para productos 100% naturales y veganos. Salud, sabor y sostenibilidad en cada compra.
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h5 class="text-uppercase mb-3">Navegación</h5>
+                        <ul class="list-unstyled">
+                            <li><a class="text-white text-decoration-none" th:href="@{/}">Inicio</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/productos/listado}">Productos</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/blog/listado}">Blog</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/quienesSomos/listado}">¿Quiénes somos?</a></li>
+                            <li><a class="text-white text-decoration-none" th:href="@{/contacto/formulario}">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h5 class="text-uppercase mb-3">Contáctanos</h5>
+                        <p><i class="fas fa-envelope me-2"></i> contacto@vegansitavi.com</p>
+                        <p><i class="fas fa-phone me-2"></i> +506 8317 3625</p>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Costa Rica</p>
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <h5 class="text-uppercase mb-3">Síguenos</h5>
+                        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                            <a href="https://www.facebook.com/vegansitavicr" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
+                            <a href="https://www.instagram.com/vegansitavi" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="https://wa.me/50683173625" class="text-white"><i class="fab fa-whatsapp fa-2x"></i></a>
+                            <a href="https://www.tiktok.com/@vegansitavi" class="text-white"><i class="fab fa-tiktok fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Línea divisoria -->
+                <hr class="border-light"/>
+
+                <!-- Créditos -->
+                <div class="text-center small">
+                    &copy; 2025 Vegan Sitavi. [[#{plantilla.derechos}]]
+                </div>
+            </div>
         </footer>
+
 
     </body>
 </html>
